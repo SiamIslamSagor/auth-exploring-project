@@ -92,7 +92,16 @@ const Login = () => {
                 <button className="btn btn-link">Register</button>
               </Link>
             </p>
-            <p>
+            <div className="flex justify-around">
+              <button onClick={handleLoginGoogle} className=" btn-link">
+                Google
+              </button>
+              <span>Or</span>
+              <button onClick={handleLoginGithub} className=" btn-link">
+                Github
+              </button>
+            </div>
+            {/* <p>
               <button onClick={handleLoginGoogle} className="btn btn-link">
                 Login with Google
               </button>
@@ -101,7 +110,7 @@ const Login = () => {
               <button onClick={handleLoginGithub} className="btn btn-link">
                 Login with Github
               </button>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
