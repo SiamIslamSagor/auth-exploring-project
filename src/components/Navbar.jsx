@@ -27,6 +27,16 @@ const Navbar = () => {
       <li>
         <NavLink to="/orders">Orders</NavLink>
       </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/profile">Profile</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -67,7 +77,7 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <>
-            <span>{user.email}</span>
+            <span>{user.email ? user.email : user.displayName}</span>
             <a onClick={handleLogOut} className="btn btn-sm">
               Sign Out
             </a>

@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, signInGoogle, signInGithub } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = e => {
@@ -21,6 +21,26 @@ const Login = () => {
       })
       .catch(error => {
         console.error(error);
+      });
+  };
+
+  const handleLoginGoogle = () => {
+    signInGoogle()
+      .then(result => {
+        console.log(result.user);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
+  const handleLoginGithub = () => {
+    signInGithub()
+      .then(result => {
+        console.log(result.user);
+      })
+      .catch(error => {
+        console.log(error);
       });
   };
 
@@ -71,6 +91,16 @@ const Login = () => {
               <Link to="/register">
                 <button className="btn btn-link">Register</button>
               </Link>
+            </p>
+            <p>
+              <button onClick={handleLoginGoogle} className="btn btn-link">
+                Login with Google
+              </button>
+            </p>
+            <p>
+              <button onClick={handleLoginGithub} className="btn btn-link">
+                Login with Github
+              </button>
             </p>
           </div>
         </div>
